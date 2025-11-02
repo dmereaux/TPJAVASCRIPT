@@ -23,7 +23,7 @@ describe('recherche PO', function() {
   afterEach(async function() {
     await driver.quit();
   })
-
+// recherche MUG
     it('Recherche MUG', async function(){
         rp= await hp.enter_search(data.searchItem);
 //      rp=  await new RechercherPage(driver);
