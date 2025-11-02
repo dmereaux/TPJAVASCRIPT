@@ -13,5 +13,4 @@ class RechercherPage{
    
     }
 }
-
 module.exports = RechercherPage;

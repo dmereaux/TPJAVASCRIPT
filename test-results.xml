@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="38.018" tests="7" failures="1">
-  <testsuite name="Root Suite" timestamp="2025-10-30T19:52:15" tests="0" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="35.568" tests="7" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-11-02T13:20:04" tests="0" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="test divers" timestamp="2025-10-30T19:52:15" tests="6" file="/Users/dominiquemereaux/code/javascript/TP/test/recherce.spec.js" time="32.412" failures="1">
-    <testcase name="test divers recherche MUG" time="4.184" classname="recherche MUG">
+  <testsuite name="test divers" timestamp="2025-11-02T13:20:04" tests="6" file="/Users/dominiquemereaux/code/javascript/TP/test/recherce.spec.js" time="29.764" failures="0">
+    <testcase name="test divers recherche MUG" time="4.172" classname="recherche MUG">
     </testcase>
-    <testcase name="test divers fenêtre modale + frame +traitement alerte" time="1.360" classname="fenêtre modale + frame +traitement alerte">
+    <testcase name="test divers fenêtre modale + frame +traitement alerte" time="0.926" classname="fenêtre modale + frame +traitement alerte">
     </testcase>
-    <testcase name="test divers move to + wait" time="2.271" classname="move to + wait">
+    <testcase name="test divers move to + wait" time="2.166" classname="move to + wait">
     </testcase>
-    <testcase name="test divers javascript executor" time="3.824" classname="javascript executor">
+    <testcase name="test divers javascript executor" time="3.611" classname="javascript executor">
     </testcase>
-    <testcase name="test divers should detect if an element is selected" time="2.786" classname="should detect if an element is selected">
-      <failure message="The second option should be selected after selection
-
-false !== true
-" type="AssertionError"><![CDATA[AssertionError [ERR_ASSERTION]: The second option should be selected after selection
-
-false !== true
-
-    at Context.<anonymous> (test/recherce.spec.js:78:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-
-      + expected - actual
-
-      -false
-      +true
-      ]]></failure>
+    <testcase name="test divers should detect if an element is selected" time="3.167" classname="should detect if an element is selected">
     </testcase>
-    <testcase name="test divers should detect if an element is checked" time="2.998" classname="should detect if an element is checked">
+    <testcase name="test divers should detect if an element is checked" time="3.255" classname="should detect if an element is checked">
     </testcase>
   </testsuite>
-  <testsuite name="recherche PO" timestamp="2025-10-30T19:52:48" tests="1" file="/Users/dominiquemereaux/code/javascript/TP/test/recherchePO.spec.js" time="5.605" failures="0">
-    <testcase name="recherche PO Recherche MUG" time="3.432" classname="Recherche MUG">
+  <testsuite name="recherche PO" timestamp="2025-11-02T13:20:33" tests="1" file="/Users/dominiquemereaux/code/javascript/TP/test/recherchePO.spec.js" time="5.802" failures="0">
+    <testcase name="recherche PO Recherche MUG" time="3.776" classname="Recherche MUG">
     </testcase>
   </testsuite>
 </testsuites>

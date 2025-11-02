@@ -73,8 +73,11 @@ describe('test divers', function() {
     let isSelected = await element.isSelected();
     assert.strictEqual(isSelected, true, 'The first option should be selected by default');
     let element2 = await driver.findElement(By.xpath('//*[@id="group_1"]'));
-    new Select(element2).selectByIndex(2);   
-    element = await driver.findElement(By.xpath('//*[@id="group_1"]/option[2]'));
+    new Select(element2).selectByVisibleText('L');  
+//    await driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//*[@id="group_1"]/option[2]'))),5000)
+    await driver.wait(until.elementIsSelected(driver.findElement(By.xpath('//*[@id="group_1"]/option[3]'))),5000)
+//      await sleep(5000);    
+    element = await driver.findElement(By.xpath('//*[@id="group_1"]/option[3]'));
     assert.strictEqual(await element.isSelected(), true, 'The second option should be selected after selection');
 });
   it('should detect if an element is checked', async () => {
