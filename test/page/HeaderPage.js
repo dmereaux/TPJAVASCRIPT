@@ -7,7 +7,6 @@ class HeaderPage{
         this.driver = driver;
     }
 
-
     async enter_search(searchText){
         await this.driver.findElement(By.css(locators.searchField)).sendKeys(searchText);
         await this.driver.findElement(By.css(locators.searchField)).sendKeys(Key.RETURN);

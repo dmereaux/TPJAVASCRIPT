@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "chai": "^6.2.0",
+    "firefox-profile": "^4.7.0",
+    "geckodriver": "^6.0.2",
+    "mocha": "^11.7.4",
+    "mocha-junit-reporter": "^2.2.1",
+    "selenium-webdriver": "^4.37.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter mocha-junit-reporter "
+  }
+}

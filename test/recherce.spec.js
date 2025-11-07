@@ -14,9 +14,9 @@ describe('test divers', function() {
   beforeEach(async function() {
     driver = await new Builder().forBrowser('firefox').build()
 
-//    driver = await new Builder().forBrowser('firefox')
-//      .setFirefoxOptions(options.addArguments('--headless'))
-//      .build()
+ //   driver = await new Builder().forBrowser('firefox')
+ //     .setFirefoxOptions(options.addArguments('--headless'))
+ //     .build()
     vars = {}
   })
   afterEach(async function() {
@@ -30,19 +30,28 @@ describe('test divers', function() {
     await driver.findElement(By.name("s")).sendKeys(Key.ENTER)
     await driver.wait(until.elementLocated(By.css(".col-lg-5 > p")), 10000)
     assert(await driver.findElement(By.css(".col-lg-5 > p")).getText() == "Il y a 5 produits.")
+    let liste=await driver.findElements(By.xpath("//*[@id='js-product-list']/div[1]/div/article/div/div[2]/h2/a"))
+    assert.strictEqual(liste.length,5)
+    for (elt of liste){
+      let text= await elt.getText()
+      console.log(text)
+      expect(text.toLowerCase()).to.include('mug')
+    }
   })
     it('fenêtre modale + frame +traitement alerte', async function() {
     await driver.get("https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_alert")
     await driver.manage().window().setRect({ width: 1189, height: 693 })
     await driver.findElement(By.id("accept-choices")).click()
+    let frame=driver.findElement(By.id("iframeResult"))
     await driver.switchTo().frame("iframeResult")
     await driver.findElement(By.css("body > button")).click()
+    await driver.wait(until.alertIsPresent(),5000)
     let alert=await driver.switchTo().alert()
     const alertText = await alert.getText()
     expect(alertText).to.include('Hello! I am an alert box!')
     await alert.accept()
   })
-      it('move to + wait', async function() {
+    it('move to + wait', async function() {
     await driver.get("http://www.qualifiez.fr/monPrestashop2/prestashop/index.php")
     await driver.manage().window().setRect({ width: 1189, height: 693 })    
     let elt = await driver.findElement(By.css("#category-4  > a")).isDisplayed()
@@ -57,7 +66,7 @@ describe('test divers', function() {
 //    assert.ok(elt2)
     
   })
-        it('javascript executor', async function() {
+    it('javascript executor', async function() {
     await driver.get("http://www.qualifiez.fr/monPrestashop2/prestashop/index.php")
     await driver.manage().window().setRect({ width: 1189, height: 693 })
     await driver.findElement(By.name("s")).click()
@@ -74,6 +83,7 @@ describe('test divers', function() {
     assert.strictEqual(isSelected, true, 'The first option should be selected by default');
     let element2 = await driver.findElement(By.xpath('//*[@id="group_1"]'));
     new Select(element2).selectByVisibleText('L');  
+
 //    await driver.wait(until.elementIsVisible(driver.findElement(By.xpath('//*[@id="group_1"]/option[2]'))),5000)
     await driver.wait(until.elementIsSelected(driver.findElement(By.xpath('//*[@id="group_1"]/option[3]'))),5000)
 //      await sleep(5000);    
