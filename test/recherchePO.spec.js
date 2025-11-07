@@ -1,4 +1,5 @@
 
+// cet include ne devrait pas être nécessaire 
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const HeaderPage = require('./page/HeaderPage');
 const RechercherPage = require('./page/RechercherPage');
@@ -13,23 +14,32 @@ describe('recherche PO', function() {
   let hp
   
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('firefox').build();
+    // la creation du driver peut être factorisée ici et paramètrée avec le navigateur
+    driver = await new Builder().forBrowser(data.navigateur).build();
     driver.manage().setTimeouts( { implicit: 5000 } );
     driver.get(data.baseUrl);
     hp= new HeaderPage(driver);
-    
     vars = {}
   })
   afterEach(async function() {
+    // la destruction du driver peut être factorisée ici
     await driver.quit();
   })
-
+// recherche MUG.  
     it('Recherche MUG', async function(){
-        rp= await hp.enter_search(data.searchItem);
-//      rp=  await new RechercherPage(driver);
+        rp= await hp.enter_search("Mug");
         msg= await rp.returnMessage();
-        assert.equal(msg, data.resultMessage,"Le message est incorrect:"+msg);
-        expect(msg).to.equal(data.resultMessage);
+        assert.equal(msg, "Il y a 5 produits.","Le message est incorrect:"+msg);
+        assert.strictEqual(await rp.countProducts(),5,"Le nombre de produits est incorrect");
+        expect( await rp.verifyAllProductsContain("Mug")).to.be.true;
+        
+    })
+    it('Recherche T-shirt', async function(){
+        rp= await hp.enter_search("T-shirt");
+        msg= await rp.returnMessage();
+        assert.equal(msg, "Il y a 1 produit.","Le message est incorrect:"+msg);
+        assert.strictEqual(await rp.countProducts(),1,"Le nombre de produits est incorrect");
+        expect( await rp.verifyAllProductsContain("T-shirt")).to.be.true;
         
     })
 })
